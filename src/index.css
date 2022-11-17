@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@500&family=Chango&family=Source+Sans+Pro:wght@500&display=swap");
+
+/* ========================== font guide
+* font-family: 'Barlow', sans-serif; // base font
+* font-family: 'Chango', cursive; // effect font
+* font-family: 'Source Sans Pro', sans-serif;  // clean font
+*/
+
+body {
+  background-color: #ffffff;
+  margin: 0;
+
+  /* base font */
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 12px;
+  color: "#333333";
+}
+
+.font-barlow {
+  font-family: "Barlow", sans-serif;
+}
+
+.font-chango {
+  font-family: "Chango", cursive;
+}
+
+.font-sans {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.semi-bold {
+  font-weight: 700;
+}
+
+.thin {
+  font-weight: 300;
+}
+
+.sm {
+  font-size: 9px;
+}
+
+.base {
+  font-size: 12px;
+}
+
+.medium {
+  font-size: 16px;
+}
+
+.large {
+  font-size: 24px;
+}
+
+.extra {
+  font-size: 30px;
+}
+
+.extra-large {
+  font-size: 40px;
+}
+
+.color-base {
+  color: #333333;
+}
+
+.bg-base {
+  background-color: #333333;
+}
+
+.color-secondary {
+  color: #4d6dbd;
+}
+
+.bg-secondary {
+  background-color: #4d6dbd;
+}
+
+.color-primary {
+  color: #307db8;
+}
+
+.bg-primary {
+  background-color: #307db8;
+}
+
+.color-dark {
+  color: #eff2f3;
+}
+
+.bg-dark {
+  background-color: #eff2f3;
+}
+
+.color-dark-alt {
+  color: #f4fbfd;
+}
+
+.bg-dark-alt {
+  background-color: #f4fbfd;
+}
+
+.color-alt {
+  color: #a4c7c6;
+}
+
+.bg-alt {
+  background-color: #a4c7c6;
+}
+
+.color-white {
+  color: #ffffff;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.color-black {
+  color: #0d0d0d;
+}
+
+.bg-black {
+  background-color: #0d0d0d;
+}
+
+.color-orange {
+  color: #ff9f0d;
+}
+
+.bg-orange {
+  background-color: #ff9f0d;
+}
+
+.color-grey {
+  color: #e0e0e0;
+}
+
+.bg-grey {
+  background-color: #e0e0e0;
+}
+
+.color-orange-alt {
+  color: #faf7f2;
+}
+
+.bg-orange-alt {
+  background-color: #faf7f2;
+}
+
+.flex {
+  display: flex;
+}
+
+.block {
+  display: block;
+}
+
+.hidden {
+  display: hidden;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
