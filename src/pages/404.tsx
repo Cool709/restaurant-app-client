@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { BlankContainer } from "../components/global/blank-container";
+import { BlankContainer } from "../components/container/blank-container";
 import { Text } from "../components/text/text";
 
 export const NotFoundPage = () => {
@@ -26,7 +26,7 @@ export const NotFoundPage = () => {
 
 const NotFoundWrapper = styled.div`
   width: 100%;
-  height: calc(100vh - 134px);
+  min-height: calc(100vh - 134px);
 
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@ const NotFoundWrapper = styled.div`
 
 const ContentWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  min-height: calc(100vh - 134px);
 
   display: flex;
   flex-direction: column;

@@ -1,5 +1,5 @@
 export const PUBLIC_ROUTES = {
-  default: "/login",
+  default: "/",
   signup: "/signup",
   login: "/login",
   error404: "/error404",
@@ -8,4 +8,5 @@ export const PUBLIC_ROUTES = {
 export const PRIVATE_ROUTES = {
   home: "/home",
   admin: "/admin",
+  restaurants: "/restaurants",
 };

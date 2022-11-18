@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { Container } from "../components/global/container";
+import { Container } from "../components/container/container";
 
 import { LOGO } from "../config/images";
 import { Text } from "../components/text/text";
@@ -13,11 +13,11 @@ export const Header = () => {
       <Container>
         <ContentWrapper>
           <Logo to={PRIVATE_ROUTES.home} className="large font-chango">
-            <img src={LOGO} alt="logo image" width="50px" height="60px" />
+            <img src={LOGO} alt="logo" width="50px" height="60px" />
             <Text>Rating App</Text>
           </Logo>
           <LinkGroup>
-            <HeaderLink to={PUBLIC_ROUTES.login}>Login</HeaderLink>
+            <HeaderLink to={PUBLIC_ROUTES.login}>Sign In</HeaderLink>
             <HeaderLink to={PUBLIC_ROUTES.signup}>Sign up</HeaderLink>
           </LinkGroup>
         </ContentWrapper>

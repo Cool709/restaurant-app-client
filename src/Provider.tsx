@@ -1,5 +1,6 @@
 import { ThemeProvider } from "styled-components";
 import { COLORS, TEXT_SIZE } from "./config/config";
+import { AuthProvider } from "./services/auth.service";
 
 interface ProviderProps {
   children: React.ReactNode;
@@ -13,7 +14,7 @@ const theme = {
 export const Provider = ({ children }: ProviderProps) => {
   return (
     <ThemeProvider theme={theme}>
-      <div>{children}</div>
+      <AuthProvider>{children}</AuthProvider>
     </ThemeProvider>
   );
 };
