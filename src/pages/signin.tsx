@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { BlankContainer } from "../components/container/blank-container";
-import { SignInForm } from "../components/page-elements/signin-form";
+import { SignInForm } from "../components/page-elements/auth/signin-form";
 
 export const SignIn = () => {
   return (

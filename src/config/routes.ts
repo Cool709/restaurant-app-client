@@ -9,4 +9,6 @@ export const PRIVATE_ROUTES = {
   home: "/home",
   admin: "/admin",
   restaurants: "/restaurants",
+  detail: "/detail",
+  leaveComment: "/leave-comment",
 };

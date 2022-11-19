@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface FormInputProps {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   placeholder: string;
   type?: string;
   value: string;
@@ -17,7 +17,7 @@ export const FormInput = ({
 }: FormInputProps) => {
   return (
     <FormInputWrapper>
-      <IconBox>{icon}</IconBox>
+      {icon && <IconBox>{icon}</IconBox>}
       <Input
         type={type}
         placeholder={placeholder}
@@ -66,7 +66,7 @@ const Input = styled.input`
 
   width: 100%;
 
-  padding: 4px;
+  padding: 4px 8px;
 
   margin: 0;
 

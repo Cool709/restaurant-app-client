@@ -3,11 +3,16 @@ import { Link } from "react-router-dom";
 
 import { Container } from "../components/container/container";
 
+import { useAuth } from "../services/auth.service";
+
 import { LOGO } from "../config/images";
 import { Text } from "../components/text/text";
 import { PUBLIC_ROUTES, PRIVATE_ROUTES } from "../config/routes";
+import { APIs } from "../config/general";
 
 export const Header = () => {
+  const auth = useAuth();
+
   return (
     <HeaderWrapper>
       <Container>
@@ -16,10 +21,31 @@ export const Header = () => {
             <img src={LOGO} alt="logo" width="50px" height="60px" />
             <Text>Rating App</Text>
           </Logo>
-          <LinkGroup>
-            <HeaderLink to={PUBLIC_ROUTES.login}>Sign In</HeaderLink>
-            <HeaderLink to={PUBLIC_ROUTES.signup}>Sign up</HeaderLink>
-          </LinkGroup>
+          {auth?.user === null && (
+            <LinkGroup>
+              <HeaderLink to={PUBLIC_ROUTES.login}>Sign In</HeaderLink>
+              <HeaderLink to={PUBLIC_ROUTES.signup}>Sign up</HeaderLink>
+            </LinkGroup>
+          )}
+          {auth?.user !== null && (
+            <LinkGroup>
+              <UserAvatar
+                src={
+                  APIs.USER_IMAGE_API +
+                  (auth?.user.image === undefined
+                    ? "no-image"
+                    : auth.user.image)
+                }
+                alt="avatar"
+              />
+              <HeaderLink
+                to={PUBLIC_ROUTES.login}
+                onClick={() => auth?.signOut()}
+              >
+                Sign out
+              </HeaderLink>
+            </LinkGroup>
+          )}
         </ContentWrapper>
       </Container>
     </HeaderWrapper>
@@ -98,4 +124,12 @@ const HeaderLink = styled(Link)`
   &:hover {
     color: ${(props) => props.theme.orange};
   }
+`;
+
+const UserAvatar = styled.img`
+  width: 40px;
+  height: 40px;
+
+  border: 3px solid ${(props) => props.theme.base};
+  border-radius: 50%;
 `;

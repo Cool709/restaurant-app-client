@@ -2,7 +2,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { getAuth } from "../utils/localstorage";
 import { setAuthToken } from "../utils/set-auth-token";
-import { BACKEND_BASE_URL } from "../config/general";
+import { APIs } from "../config/general";
 
 export const signUpAction = async (
   name: string,
@@ -11,7 +11,7 @@ export const signUpAction = async (
   role: string
 ) => {
   const res = await axios
-    .post(BACKEND_BASE_URL + "/user", {
+    .post(APIs.REGISTER_API, {
       name,
       email,
       password,
@@ -28,7 +28,7 @@ export const signUpAction = async (
 
 export const signInAction = async (email: string, password: string) => {
   const res = await axios
-    .post(BACKEND_BASE_URL + "/login", {
+    .post(APIs.LOGIN_API, {
       email,
       password,
     })
@@ -48,7 +48,7 @@ export const getCurrentUser = () => {
   try {
     const decoded: any = jwtDecode(String(getAuth()));
 
-    return decoded as any;
+    return decoded.user as any;
   } catch (err) {
     return { ok: false };
   }

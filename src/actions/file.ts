@@ -1,5 +1,4 @@
 import axios from "axios";
-import { BACKEND_BASE_URL } from "../config/general";
 
 export const uploadFile = async (file: any, url: string) => {
   if (file === undefined) return { ok: true };
@@ -13,7 +12,7 @@ export const uploadFile = async (file: any, url: string) => {
     },
   };
 
-  const res = await axios.put(BACKEND_BASE_URL + url, formData, config);
+  const res = await axios.put(url, formData, config);
 
   return (res as any).data as any;
 };

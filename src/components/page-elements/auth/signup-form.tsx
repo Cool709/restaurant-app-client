@@ -6,19 +6,21 @@ import styled from "styled-components";
 import { AiOutlineMail, AiOutlineUnlock, AiOutlineUser } from "react-icons/ai";
 import { DotLoader } from "react-spinners";
 
-import { Text } from "../text/text";
-import { FormInput } from "../input/form-input";
-import { FileInputPreview } from "../input/file-input";
+import { Text } from "../../text/text";
+import { FormInput } from "../../input/form-input";
+import { FileInputPreview } from "../../input/file-input";
 
-import { ROLE } from "../../constants/constants";
-import { PUBLIC_ROUTES } from "../../config/routes";
+import { ROLE } from "../../../constants/constants";
+import { PUBLIC_ROUTES } from "../../../config/routes";
 
-import { validateEmail } from "../../utils/email-validator";
-import { validatePassword } from "../../utils/password-validator";
+import { validateEmail } from "../../../utils/email-validator";
+import { validatePassword } from "../../../utils/password-validator";
 
 // action
-import { signUpAction } from "../../actions/auth";
-import { uploadFile } from "../../actions/file";
+import { signUpAction } from "../../../actions/auth";
+import { uploadFile } from "../../../actions/file";
+
+import { APIs } from "../../../config/general";
 
 export const SignUpForm = () => {
   const navigate = useNavigate();
@@ -59,7 +61,7 @@ export const SignUpForm = () => {
     } else {
       const uploadResult = await uploadFile(
         file,
-        "/upload/user/" + result.user._id
+        APIs.UPLOAD_USER_IMAGE_API + result.user._id
       );
       if (uploadResult.ok !== true) {
         toast.error("An error caused during file uploading");

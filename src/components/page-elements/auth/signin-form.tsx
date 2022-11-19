@@ -6,18 +6,18 @@ import styled from "styled-components";
 import { AiOutlineMail, AiOutlineUnlock } from "react-icons/ai";
 import { DotLoader } from "react-spinners";
 
-import { Text } from "../text/text";
-import { FormInput } from "../input/form-input";
+import { Text } from "../../text/text";
+import { FormInput } from "../../input/form-input";
 
-import { useAuth } from "../../services/auth.service";
+import { useAuth } from "../../../services/auth.service";
 
-import { setAuthToken } from "../../utils/set-auth-token";
-import { validateEmail } from "../../utils/email-validator";
-import { validatePassword } from "../../utils/password-validator";
+import { setAuthToken } from "../../../utils/set-auth-token";
+import { validateEmail } from "../../../utils/email-validator";
+import { validatePassword } from "../../../utils/password-validator";
 
-import { signInAction } from "../../actions/auth";
-import { PRIVATE_ROUTES } from "../../config/routes";
-import { ROLE } from "../../constants/constants";
+import { signInAction } from "../../../actions/auth";
+import { PRIVATE_ROUTES } from "../../../config/routes";
+import { ROLE } from "../../../constants/constants";
 
 export const SignInForm = () => {
   const auth = useAuth();
