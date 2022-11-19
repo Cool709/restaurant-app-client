@@ -9,15 +9,24 @@ import { LOGO } from "../config/images";
 import { Text } from "../components/text/text";
 import { PUBLIC_ROUTES, PRIVATE_ROUTES } from "../config/routes";
 import { APIs } from "../config/general";
+import { ROLE } from "../constants/constants";
 
 export const Header = () => {
   const auth = useAuth();
+  const homeRoute =
+    auth?.user !== null
+      ? auth?.user.role === ROLE.admin
+        ? PRIVATE_ROUTES.admin
+        : auth?.user.role === ROLE.owner
+        ? PRIVATE_ROUTES.restaurants
+        : PRIVATE_ROUTES.home
+      : "";
 
   return (
     <HeaderWrapper>
       <Container>
         <ContentWrapper>
-          <Logo to={PRIVATE_ROUTES.home} className="large font-chango">
+          <Logo to={homeRoute} className="large font-chango">
             <img src={LOGO} alt="logo" width="50px" height="60px" />
             <Text>Rating App</Text>
           </Logo>
@@ -132,4 +141,6 @@ const UserAvatar = styled.img`
 
   border: 3px solid ${(props) => props.theme.base};
   border-radius: 50%;
+
+  object-fit: cover;
 `;

@@ -3,90 +3,79 @@ import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { Text } from "../../text/text";
-import { Rating } from "react-simple-star-rating";
 import { FormInput } from "../../input/form-input";
 import { DotLoader } from "react-spinners";
 
 import {
-  leaveComment,
-  validateLeaveCommentFields,
-} from "../../../actions/restaurant";
+  validateCreateReviewFields,
+  replyToComment,
+} from "../../../actions/review";
+
 import { PRIVATE_ROUTES } from "../../../config/routes";
 
 import { useAuth } from "../../../services/auth.service";
 
-export const CreateCommentForm = () => {
+interface ReplyCommentFormProps {
+  comment: any;
+}
+
+export const ReplyCommentForm = ({ comment }: ReplyCommentFormProps) => {
   const auth = useAuth();
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [rate, setRate] = useState(5);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [reply, setReply] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleLeaveComment = async () => {
+  const handleReplyComment = async () => {
     if (loading) return;
-    if (!validateLeaveCommentFields(title, description)) {
+    setLoading(true);
+    if (!validateCreateReviewFields(reply)) {
       toast.warn("Please input required fields");
       return;
     }
     if (auth?.user === null) return;
-    setLoading(true);
-    const result = await leaveComment(
-      rate,
-      title,
-      description,
+    const result = await replyToComment(
+      reply,
       String(id),
       (auth?.user as any)._id
     );
 
     if (result.ok === false) {
-      toast.error("An error occured during leaving comment.");
+      toast.error("An error occured during replying comment.");
       setLoading(false);
       return;
     } else {
       setLoading(false);
       toast.success(result.message);
 
-      setTimeout(() => navigate(`${PRIVATE_ROUTES.detail}/${id}`), 1000);
+      setTimeout(() => navigate(`${PRIVATE_ROUTES.restaurants}`), 1000);
     }
   };
 
   return (
-    <CreateCommentWrapper>
+    <ReplyCommentWrapper>
       <ContentWrapper>
         <TitleRow>
-          <Text className="large color-orange">Leave A Comment</Text>
+          <Text className="large color-orange">What the customer says</Text>
+        </TitleRow>
+        <Text className="medium semi-bold">{comment.title}</Text>
+        <Text className="medium">{comment.description}</Text>
+        <TitleRow>
+          <Text className="large color-orange">Reply To User</Text>
         </TitleRow>
         <InputForm>
           <Row>
-            <InputLabel>Rate the Restaurant</InputLabel>
-            <Rating
-              initialValue={rate}
-              onClick={(selectedRate) => setRate(selectedRate)}
-              size={30}
-            />
-          </Row>
-          <Row>
-            <InputLabel>Title</InputLabel>
+            <InputLabel>Your Reply</InputLabel>
             <FormInput
-              placeholder="Title"
-              value={title}
-              onChange={(value) => setTitle(value)}
-            />
-          </Row>
-          <Row>
-            <InputLabel>Description</InputLabel>
-            <FormInput
-              placeholder="Description"
-              value={description}
-              onChange={(value) => setDescription(value)}
+              placeholder="Your Reply"
+              value={reply}
+              onChange={(value) => setReply(value)}
             />
           </Row>
           <Row>
             <InputLabel />
-            <LeaveCommentButton onClick={handleLeaveComment}>
+            <ReplyCommentButton onClick={handleReplyComment}>
               <DotLoader
                 color={"white"}
                 size={20}
@@ -94,19 +83,19 @@ export const CreateCommentForm = () => {
                 aria-label="Loading Spinner"
                 data-testid="loader"
               />
-              Leave Comment
-            </LeaveCommentButton>
+              Reply
+            </ReplyCommentButton>
           </Row>
         </InputForm>
       </ContentWrapper>
-    </CreateCommentWrapper>
+    </ReplyCommentWrapper>
   );
 };
 
-const CreateCommentWrapper = styled.div`
+const ReplyCommentWrapper = styled.div`
   width: 100%;
 
-  margin: 0px 20px;
+  margin: 0px;
 
   @media (max-width: 768px) {
     margin: 0px;
@@ -120,11 +109,11 @@ const ContentWrapper = styled.div`
   justify-content: stretch;
   padding: 20px;
 
-  gap: 8px;
+  gap: 16px;
 `;
 
 const TitleRow = styled.div`
-  width: 95%;
+  width: 98%;
 
   display: flex;
   flex-direction: row;
@@ -143,22 +132,15 @@ const Row = styled.div`
   width: 98%;
 
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   justify-content: stretch;
-  gap: 8px;
+  gap: 4px;
 
   margin-bottom: 4px;
 
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    align-items: stretch;
-
-    gap: 4px;
-
-    p {
-      text-align: left;
-    }
+  p {
+    text-align: left;
   }
 `;
 
@@ -173,7 +155,7 @@ const InputLabel = styled.p`
   margin: 0;
 `;
 
-const LeaveCommentButton = styled.button`
+const ReplyCommentButton = styled.button`
   width: 150px;
   height: 32px;
 

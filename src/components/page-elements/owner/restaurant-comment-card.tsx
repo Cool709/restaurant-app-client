@@ -1,15 +1,19 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Rating } from "react-simple-star-rating";
 
 import { Text } from "../../text/text";
-import { UserCart } from "./user-cart";
+import { UserCart } from "../detail/user-cart";
+
+import { APIs } from "../../../config/general";
+import { PRIVATE_ROUTES } from "../../../config/routes";
 
 interface CommentProps {
-  comment: any;
+  restaurant: any;
 }
 
-export const Comment = ({ comment }: CommentProps) => {
+export const RestaurantCommentCard = ({ restaurant }: CommentProps) => {
   const boardRef = useRef(null);
 
   const [opened, setOpened] = useState(false);
@@ -23,42 +27,55 @@ export const Comment = ({ comment }: CommentProps) => {
   });
 
   return (
-    <CommentWrapper aria-expanded={opened}>
-      <CommentArea onClick={() => setOpened(!opened)}>
+    <CommentCardWrapper aria-expanded={opened}>
+      <RestaurantInfo onClick={() => setOpened(!opened)}>
         <Details>
-          <UserCart user={comment.user} />
+          <RestaurantCardImage
+            src={
+              APIs.RESTAURANT_IMAGE_API +
+              (restaurant === null ? "no-image" : (restaurant as any).image)
+            }
+            alt="restaurant"
+          />
           <Info>
-            <Text className="semi-bold">{comment.title}</Text>
-            <Text>{comment.description}</Text>
-            <Text>{new Date(comment.createdAt).toString()}</Text>
-            <Rating initialValue={comment.rate} readonly size={25} />
+            <Text className="semi-bold">{restaurant.name}</Text>
+            <Text>{restaurant.description}</Text>
+            <Rating initialValue={restaurant.normalRate} readonly size={25} />
           </Info>
         </Details>
-      </CommentArea>
+      </RestaurantInfo>
       <CommentBoard
         className="board"
         ref={boardRef}
         style={{ height: `${opened ? height : 0}px` }}
       >
         <CommentContent className="content">
-          <Text className="medium semi-bold color-base">Reply</Text>
-          {comment.review !== undefined && (
-            <Details>
-              <UserCart user={comment.review.owner} />
-              <Info>
-                <Text>{comment.review.description}</Text>
-                <Text>{new Date(comment.createdAt).toString()}</Text>
-              </Info>
-            </Details>
-          )}
-          {comment.review == undefined && "Not Reviewd Yet"}
+          <Text className="medium semi-bold color-base">Comments</Text>
+          {restaurant.comments.map((comment: any, index: any) => {
+            return (
+              <Details key={index}>
+                <UserCart user={comment.user} />
+                <Info>
+                  <Text>{comment.title}</Text>
+                  <Text>{comment.description}</Text>
+                  <Text>{new Date(comment.createdAt).toString()}</Text>
+                  <Rating initialValue={comment.rate} readonly size={25} />
+                </Info>
+                <ReplyLink to={`${PRIVATE_ROUTES.replyComment}/${comment._id}`}>
+                  Reply
+                </ReplyLink>
+              </Details>
+            );
+          })}
         </CommentContent>
       </CommentBoard>
-    </CommentWrapper>
+    </CommentCardWrapper>
   );
 };
 
-const CommentWrapper = styled.div`
+const CommentCardWrapper = styled.div`
+  width: 100%;
+
   background-color: ${(props) => props.theme.orangeAlt};
   margin-bottom: 8px;
 
@@ -83,7 +100,7 @@ const CommentWrapper = styled.div`
   }
 `;
 
-const CommentArea = styled.button`
+const RestaurantInfo = styled.button`
   width: 100%;
 
   position: relative;
@@ -141,6 +158,16 @@ const CommentContent = styled.div`
   gap: 6px;
 `;
 
+const RestaurantCardImage = styled.img`
+  width: 100px;
+  height: 100px;
+
+  border: none;
+  border-radius: 8px;
+
+  object-fit: cover;
+`;
+
 const Details = styled.div`
   display: flex;
   flex-direction: row;
@@ -148,6 +175,8 @@ const Details = styled.div`
   justify-content: stretch;
 
   gap: 8px;
+
+  position: relative;
 `;
 
 const Info = styled.div`
@@ -156,4 +185,20 @@ const Info = styled.div`
   align-items: stretch;
 
   gap: 4px;
+`;
+
+const ReplyLink = styled(Link)`
+  position: absolute;
+
+  text-decoration: none;
+
+  color: ${(props) => props.theme.orange};
+
+  top: 0;
+  right: 0;
+
+  width: 80px;
+  height: 25px;
+
+  cursor: pointer;
 `;

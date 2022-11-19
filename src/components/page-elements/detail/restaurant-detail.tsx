@@ -56,6 +56,8 @@ const RestaurantImage = styled.img`
 
   border: none;
   border-radius: 8px;
+
+  object-fit: cover;
 `;
 
 const RestaurantName = styled.p`

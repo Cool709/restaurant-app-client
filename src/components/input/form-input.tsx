@@ -32,7 +32,7 @@ export const FormInput = ({
 
 const FormInputWrapper = styled.div`
   position: relative;
-  min-width: 300px;
+  min-width: 280px;
 
   padding: 0;
 

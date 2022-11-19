@@ -48,7 +48,7 @@ export const getCurrentUser = () => {
   try {
     const decoded: any = jwtDecode(String(getAuth()));
 
-    return decoded.user as any;
+    return decoded as any;
   } catch (err) {
     return { ok: false };
   }

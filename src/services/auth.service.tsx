@@ -31,12 +31,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const setUserData = (result: any) => {
     setUser({
-      email: result.email,
-      name: result.name,
-      role: result.role,
-      _id: result._id,
-      _v: result._v,
-      image: result.image,
+      email: result.user.email,
+      name: result.user.name,
+      role: result.user.role,
+      _id: result.user._id,
+      _v: result.user._v,
+      image: result.user.image,
     });
   };
 

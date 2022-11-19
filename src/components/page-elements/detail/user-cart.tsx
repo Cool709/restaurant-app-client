@@ -17,7 +17,7 @@ export const UserCart = ({ user }: UserCartProps) => {
         }
         alt="user"
       />
-      <Text className="semi-bold">{user.name}</Text>
+      <Text className="semi-bold medium">{user.name}</Text>
     </UserCartWrapper>
   );
 };
@@ -28,7 +28,7 @@ const UserCartWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  gap: 4px;
+  gap: 6px;
 `;
 
 const UserImage = styled.img`
@@ -37,4 +37,6 @@ const UserImage = styled.img`
 
   border: 2px solid ${(props) => props.theme.grey};
   border-radius: 50%;
+
+  object-fit: cover;
 `;

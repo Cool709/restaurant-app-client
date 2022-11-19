@@ -18,6 +18,11 @@ export const APIs = {
   GET_RESTAURANT_BY_ID: BACKEND_BASE_URL + "/restaurants/", // + id,
   GET_RESTAURANTS_BY_RATE: BACKEND_BASE_URL + "/restaurants/search/rate",
   GET_RESTAURANTS_BY_OWNER: BACKEND_BASE_URL + "/restaurants/search/owner",
+  GET_RESTAURANTS_WAITING_LIST:
+    BACKEND_BASE_URL + "/restaurants/search/waiting-reply",
   // Comments
   LEAVE_COMMENT: BACKEND_BASE_URL + "/comments", // post
+  GET_COMMENT_BY_ID: BACKEND_BASE_URL + "/comments/", // + id
+  // Review
+  CREATE_REVIEW: BACKEND_BASE_URL + "/reviews", //post
 };

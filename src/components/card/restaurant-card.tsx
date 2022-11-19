@@ -22,7 +22,7 @@ export const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
         alt="restaurant"
       />
       <RestaurantContent>
-        <Text className="medium bold">Restaurant</Text>
+        <Text className="medium bold">{restaurant.name}</Text>
         <Text className="base">
           {restaurant.description.slice(0, 60)}
           {restaurant.description.length > 60 && "..."}
@@ -66,6 +66,8 @@ const RestaurantImage = styled.img`
   height: 100px;
 
   border-radius: 6px;
+
+  object-fit: cover;
 `;
 
 const RestaurantContent = styled.div`

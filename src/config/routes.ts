@@ -11,4 +11,5 @@ export const PRIVATE_ROUTES = {
   restaurants: "/restaurants",
   detail: "/detail",
   leaveComment: "/leave-comment",
+  replyComment: "/reply",
 };

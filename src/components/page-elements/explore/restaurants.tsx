@@ -57,7 +57,7 @@ export const ExploreRestaurants = () => {
       <Text className="medium font-barlow">
         {searchMethod === SearchMethods.all
           ? "All Restaurants: "
-          : `Restaurants Over Rate ${rate}`}
+          : `Restaurants Over Rate ${rate}: `}
         {restaurants.length === 0 && "No result"}
       </Text>
       <RestaurantContainer>

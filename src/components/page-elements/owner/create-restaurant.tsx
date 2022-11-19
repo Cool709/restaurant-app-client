@@ -1,43 +1,46 @@
 import styled from "styled-components";
-import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { Text } from "../../text/text";
-import { Rating } from "react-simple-star-rating";
 import { FormInput } from "../../input/form-input";
-import { DotLoader } from "react-spinners";
+import { FileInputPreview } from "../../input/file-input";
+
+import { OWNER_PSTATE } from "../../../types/states";
+
+import { uploadFile } from "../../../actions/file";
+import { APIs } from "../../../config/general";
 
 import {
-  leaveComment,
-  validateLeaveCommentFields,
+  createRestaurant,
+  validateCreateRestaurantFields,
 } from "../../../actions/restaurant";
-import { PRIVATE_ROUTES } from "../../../config/routes";
 
 import { useAuth } from "../../../services/auth.service";
 
-export const CreateCommentForm = () => {
-  const auth = useAuth();
-  const { id } = useParams();
-  const navigate = useNavigate();
+interface CreateRestaurantFormProps {
+  changeState: (value: string) => void;
+}
 
-  const [rate, setRate] = useState(5);
-  const [title, setTitle] = useState("");
+export const CreateRestaurantForm = ({
+  changeState,
+}: CreateRestaurantFormProps) => {
+  const auth = useAuth();
+  const [name, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [file, setFile] = useState();
   const [loading, setLoading] = useState(false);
 
-  const handleLeaveComment = async () => {
+  const handleCreateRestaurant = async () => {
     if (loading) return;
-    if (!validateLeaveCommentFields(title, description)) {
+    setLoading(true);
+    if (!validateCreateRestaurantFields(name, description)) {
       toast.warn("Please input required fields");
       return;
     }
     if (auth?.user === null) return;
-    setLoading(true);
-    const result = await leaveComment(
-      rate,
-      title,
+    const result = await createRestaurant(
+      name,
       description,
-      String(id),
       (auth?.user as any)._id
     );
 
@@ -46,33 +49,40 @@ export const CreateCommentForm = () => {
       setLoading(false);
       return;
     } else {
-      setLoading(false);
-      toast.success(result.message);
+      const uploadResult = await uploadFile(
+        file,
+        APIs.UPLOAD_RESTAURANT_IMAGE_API + result.restaurant._id
+      );
+      if (uploadResult.ok !== true) {
+        toast.error("An error caused during file uploading");
+        setLoading(false);
+      } else {
+        setLoading(false);
+        toast.success(result.message);
+      }
 
-      setTimeout(() => navigate(`${PRIVATE_ROUTES.detail}/${id}`), 1000);
+      setTimeout(() => changeState(OWNER_PSTATE.restaurants), 1000);
     }
   };
 
   return (
-    <CreateCommentWrapper>
+    <CreateRestaurantWrapper>
       <ContentWrapper>
         <TitleRow>
-          <Text className="large color-orange">Leave A Comment</Text>
+          <Text className="large color-orange">Create A Restaurant</Text>
         </TitleRow>
         <InputForm>
           <Row>
-            <InputLabel>Rate the Restaurant</InputLabel>
-            <Rating
-              initialValue={rate}
-              onClick={(selectedRate) => setRate(selectedRate)}
-              size={30}
+            <InputLabel>Restaurant Image</InputLabel>
+            <FileInputPreview
+              imageChanged={(selectedFile) => setFile(selectedFile)}
             />
           </Row>
           <Row>
             <InputLabel>Title</InputLabel>
             <FormInput
               placeholder="Title"
-              value={title}
+              value={name}
               onChange={(value) => setTitle(value)}
             />
           </Row>
@@ -86,24 +96,17 @@ export const CreateCommentForm = () => {
           </Row>
           <Row>
             <InputLabel />
-            <LeaveCommentButton onClick={handleLeaveComment}>
-              <DotLoader
-                color={"white"}
-                size={20}
-                loading={loading}
-                aria-label="Loading Spinner"
-                data-testid="loader"
-              />
-              Leave Comment
-            </LeaveCommentButton>
+            <CreateRestaurantButton onClick={handleCreateRestaurant}>
+              Create Restaurant
+            </CreateRestaurantButton>
           </Row>
         </InputForm>
       </ContentWrapper>
-    </CreateCommentWrapper>
+    </CreateRestaurantWrapper>
   );
 };
 
-const CreateCommentWrapper = styled.div`
+const CreateRestaurantWrapper = styled.div`
   width: 100%;
 
   margin: 0px 20px;
@@ -173,7 +176,7 @@ const InputLabel = styled.p`
   margin: 0;
 `;
 
-const LeaveCommentButton = styled.button`
+const CreateRestaurantButton = styled.button`
   width: 150px;
   height: 32px;
 

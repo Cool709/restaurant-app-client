@@ -23,6 +23,7 @@ import { Admin } from "./pages/admin";
 import { Details } from "./pages/details";
 import { Restaurants } from "./pages/restaurants";
 import { LeaveComment } from "./pages/leave-comment";
+import { ReplyComment } from "./pages/reply-comment";
 
 function App() {
   return (
@@ -61,6 +62,10 @@ function App() {
                 <Route
                   path={`${PRIVATE_ROUTES.leaveComment}/:id`}
                   element={<LeaveComment />}
+                />
+                <Route
+                  path={`${PRIVATE_ROUTES.replyComment}/:id`}
+                  element={<ReplyComment />}
                 />
               </Route>
               {/* ERROR 404 */}

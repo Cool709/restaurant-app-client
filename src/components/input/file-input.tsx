@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const FileInputPreview: React.FC<Props> = ({ imageChanged }) => {
-  const defaultImage = "/user.png";
+  const defaultImage = "../../assets/images/user.jpg";
   const previewRef = useRef<HTMLDivElement>(null);
   const imageInputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<string | ArrayBuffer | null>(defaultImage);
