@@ -1,4 +1,4 @@
-export const BACKEND_BASE_URL = "http://192.168.111.138:5000";
+export const BACKEND_BASE_URL = "https://sea-lion-app-6rs9n.ondigitalocean.app";
 
 export const APIs = {
   // auth
