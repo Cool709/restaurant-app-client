@@ -3,10 +3,15 @@ import styled from "styled-components";
 interface TextProps {
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
-export const Text = ({ children, className }: TextProps) => {
-  return <TextWrapper className={className}>{children}</TextWrapper>;
+export const Text = ({ children, className, onClick }: TextProps) => {
+  return (
+    <TextWrapper className={className} onClick={onClick}>
+      {children}
+    </TextWrapper>
+  );
 };
 
 const TextWrapper = styled.p`

@@ -24,6 +24,8 @@ import { Details } from "./pages/details";
 import { Restaurants } from "./pages/restaurants";
 import { LeaveComment } from "./pages/leave-comment";
 import { ReplyComment } from "./pages/reply-comment";
+import { UpdateUser } from "./pages/user/update-user";
+import { CreateUser } from "./pages/user/create-user";
 
 function App() {
   return (
@@ -53,6 +55,14 @@ function App() {
                 {/* ADMIN ROUTES */}
                 <Route element={<AdminRoute />}>
                   <Route path={PRIVATE_ROUTES.admin} element={<Admin />} />
+                  <Route
+                    path={PRIVATE_ROUTES.create + PRIVATE_ROUTES.user}
+                    element={<CreateUser />}
+                  />
+                  <Route
+                    path={`${PRIVATE_ROUTES.update + PRIVATE_ROUTES.user}/:id`}
+                    element={<UpdateUser />}
+                  />
                 </Route>
                 {/* AUTH */}
                 <Route

@@ -12,4 +12,7 @@ export const PRIVATE_ROUTES = {
   detail: "/detail",
   leaveComment: "/leave-comment",
   replyComment: "/reply",
+  update: "/update",
+  create: "/create",
+  user: "/user",
 };

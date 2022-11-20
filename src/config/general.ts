@@ -25,4 +25,10 @@ export const APIs = {
   GET_COMMENT_BY_ID: BACKEND_BASE_URL + "/comments/", // + id
   // Review
   CREATE_REVIEW: BACKEND_BASE_URL + "/reviews", //post
+  // users
+  GET_USERS: BACKEND_BASE_URL + "/user",
+  GET_USER_BY_ID: BACKEND_BASE_URL + "/user/", // + id
+  CREATE_USER: BACKEND_BASE_URL + "/user/", // post
+  UPDATE_USER: BACKEND_BASE_URL + "/user/", // put
+  DELETE_USER: BACKEND_BASE_URL + "/user/", // delete
 };
