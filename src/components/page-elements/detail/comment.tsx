@@ -51,7 +51,7 @@ export const Comment = ({ comment }: CommentProps) => {
               </Info>
             </Details>
           )}
-          {comment.review == undefined && "Not Reviewd Yet"}
+          {comment.review === undefined && "Not Reviewd Yet"}
         </CommentContent>
       </CommentBoard>
     </CommentWrapper>

@@ -15,7 +15,7 @@ export const AdminSideBar = ({ changeState }: AdminSideBarProps) => {
       <OptionContainer>
         <Option onClick={() => changeState(ADMIN_PSTATE.users)}>Users</Option>
         <Option onClick={() => changeState(ADMIN_PSTATE.restaurants)}>
-          My Restaurants
+          Restaurants
         </Option>
         <Option onClick={() => changeState(ADMIN_PSTATE.comments)}>
           Comments

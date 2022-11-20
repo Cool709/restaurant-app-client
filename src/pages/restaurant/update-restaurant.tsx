@@ -3,25 +3,25 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 
-import { BlankContainer } from "../components/container/blank-container";
+import { BlankContainer } from "../../components/container/blank-container";
 
-import { getCommentById } from "../actions/comment";
-import { ReplyCommentForm } from "../components/page-elements/comment/reply-comment-form";
+import { getRestaurantById } from "../../actions/restaurant";
+import { UpdateRestaurantForm } from "../../components/page-elements/admin/restaurants/update";
 
-export const ReplyComment = () => {
+export const UpdateRestaurant = () => {
   const { id } = useParams();
-  const [comment, setComment] = useState(null);
+  const [restaurant, setRestaurant] = useState(null);
 
   const getRestaurantData = async () => {
-    const result = await getCommentById(String(id));
+    const result = await getRestaurantById(String(id));
 
     if (result.ok !== true) {
       toast.error("An error occured when fetching");
-      setComment(null);
+      setRestaurant(null);
       return;
     }
 
-    setComment(result.comment);
+    setRestaurant(result.restaurant);
   };
 
   useEffect(() => {
@@ -29,17 +29,19 @@ export const ReplyComment = () => {
   });
 
   return (
-    <ReplyCommentWrapper>
+    <CreateUserWrapper>
       <BlankContainer>
         <ContentWrapper>
-          {comment !== null && <ReplyCommentForm comment={comment} />}
+          {restaurant !== null && (
+            <UpdateRestaurantForm restaurant={restaurant} />
+          )}
         </ContentWrapper>
       </BlankContainer>
-    </ReplyCommentWrapper>
+    </CreateUserWrapper>
   );
 };
 
-const ReplyCommentWrapper = styled.div`
+const CreateUserWrapper = styled.div`
   width: 100%;
   min-height: calc(100vh - 134px);
 

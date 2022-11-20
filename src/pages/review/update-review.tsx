@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 
-import { BlankContainer } from "../components/container/blank-container";
+import { BlankContainer } from "../../components/container/blank-container";
 
-import { getCommentById } from "../actions/comment";
-import { ReplyCommentForm } from "../components/page-elements/comment/reply-comment-form";
+import { getCommentById } from "../../actions/comment";
+import { UpdateReplyForm } from "../../components/page-elements/admin/reviews/update";
 
-export const ReplyComment = () => {
+export const UpdateReview = () => {
   const { id } = useParams();
   const [comment, setComment] = useState(null);
 
@@ -29,17 +29,17 @@ export const ReplyComment = () => {
   });
 
   return (
-    <ReplyCommentWrapper>
+    <UpdateReviewWrapper>
       <BlankContainer>
         <ContentWrapper>
-          {comment !== null && <ReplyCommentForm comment={comment} />}
+          {comment !== null && <UpdateReplyForm comment={comment} />}
         </ContentWrapper>
       </BlankContainer>
-    </ReplyCommentWrapper>
+    </UpdateReviewWrapper>
   );
 };
 
-const ReplyCommentWrapper = styled.div`
+const UpdateReviewWrapper = styled.div`
   width: 100%;
   min-height: calc(100vh - 134px);
 

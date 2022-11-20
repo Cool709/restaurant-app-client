@@ -3,16 +3,16 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 
-import { BlankContainer } from "../components/container/blank-container";
+import { BlankContainer } from "../../components/container/blank-container";
 
-import { getCommentById } from "../actions/comment";
-import { ReplyCommentForm } from "../components/page-elements/comment/reply-comment-form";
+import { getCommentById } from "../../actions/comment";
+import { UpdateCommentForm } from "../../components/page-elements/admin/comments/update";
 
-export const ReplyComment = () => {
+export const UpdateComment = () => {
   const { id } = useParams();
   const [comment, setComment] = useState(null);
 
-  const getRestaurantData = async () => {
+  const getCommentData = async () => {
     const result = await getCommentById(String(id));
 
     if (result.ok !== true) {
@@ -25,21 +25,21 @@ export const ReplyComment = () => {
   };
 
   useEffect(() => {
-    getRestaurantData();
+    getCommentData();
   });
 
   return (
-    <ReplyCommentWrapper>
+    <UpdateCommentWrapper>
       <BlankContainer>
         <ContentWrapper>
-          {comment !== null && <ReplyCommentForm comment={comment} />}
+          {comment !== null && <UpdateCommentForm comment={comment} />}
         </ContentWrapper>
       </BlankContainer>
-    </ReplyCommentWrapper>
+    </UpdateCommentWrapper>
   );
 };
 
-const ReplyCommentWrapper = styled.div`
+const UpdateCommentWrapper = styled.div`
   width: 100%;
   min-height: calc(100vh - 134px);
 

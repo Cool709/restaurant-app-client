@@ -57,7 +57,7 @@ export const commentAble = (comments: any[]) => {
 
   var found = false;
   comments.forEach((comment) => {
-    if (comment.user._id === user._id) found = true;
+    if (comment.user !== null && comment.user._id === user._id) found = true;
   });
 
   return !found;
@@ -114,6 +114,48 @@ export const createRestaurant = async (
       name,
       description,
     })
+    .catch((err) => {
+      console.log(err);
+
+      return { data: { ok: false } };
+    });
+
+  return result?.data as any;
+};
+
+export const validateUpdateRestaurantFields = (
+  name: string,
+  description: string,
+  owner: string
+) => {
+  if (name === "" || description === "" || owner === "") return false;
+  return true;
+};
+
+export const updateRestaurant = async (
+  name: string,
+  description: string,
+  owner: string,
+  id: string
+) => {
+  const result = await axios
+    .put(`${APIs.UPDATE_RESTAURANT}${id}`, {
+      owner,
+      name,
+      description,
+    })
+    .catch((err) => {
+      console.log(err);
+
+      return { data: { ok: false } };
+    });
+
+  return result?.data as any;
+};
+
+export const deleteRestaurant = async (id: string) => {
+  const result = await axios
+    .delete(`${APIs.DELETE_RESTAURANT}${id}`)
     .catch((err) => {
       console.log(err);
 

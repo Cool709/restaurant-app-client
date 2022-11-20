@@ -9,16 +9,20 @@ interface UserCartProps {
 
 export const UserCart = ({ user }: UserCartProps) => {
   return (
-    <UserCartWrapper>
-      <UserImage
-        src={
-          APIs.USER_IMAGE_API +
-          (user.image === undefined ? "no-image" : user.image)
-        }
-        alt="user"
-      />
-      <Text className="semi-bold medium">{user.name}</Text>
-    </UserCartWrapper>
+    <>
+      {user !== null && (
+        <UserCartWrapper>
+          <UserImage
+            src={
+              APIs.USER_IMAGE_API +
+              (user.image === undefined ? "no-image" : user.image)
+            }
+            alt="user"
+          />
+          <Text className="semi-bold medium">{user.name}</Text>
+        </UserCartWrapper>
+      )}
+    </>
   );
 };
 

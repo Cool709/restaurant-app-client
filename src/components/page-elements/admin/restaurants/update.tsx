@@ -8,60 +8,56 @@ import { FileInputPreview } from "../../../input/file-input";
 
 import { uploadFile } from "../../../../actions/file";
 import { APIs } from "../../../../config/general";
-import { ROLE } from "../../../../constants/constants";
 
-import { validateEmail } from "../../../../utils/email-validator";
-import { validatePassword } from "../../../../utils/password-validator";
-
-import { signUpAction } from "../../../../actions/auth";
+import {
+  updateRestaurant,
+  validateUpdateRestaurantFields,
+} from "../../../../actions/restaurant";
 import { PRIVATE_ROUTES } from "../../../../config/routes";
 
-export const CreateUserForm = () => {
+interface UpdateRestaurantFormProps {
+  restaurant: any;
+}
+
+export const UpdateRestaurantForm = ({
+  restaurant,
+}: UpdateRestaurantFormProps) => {
   const navigate = useNavigate();
 
-  const [name, setTitle] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState(ROLE.user);
+  const [name, setTitle] = useState(restaurant.name);
+  const [description, setEmail] = useState(restaurant.description);
+  const [owner, setOwner] = useState(restaurant.owner._id);
   const [file, setFile] = useState();
   const [loading, setLoading] = useState(false);
 
-  const validateFields = () => {
-    if (name === "" || email === "" || password === "") {
-      toast.warn("Please fill all required fields");
-      return false;
-    }
-    if (!validateEmail(email)) {
-      toast.warn("Please input valid email");
-      return false;
-    }
-    if (!validatePassword(password)) {
-      toast.warn("Input password more than 6 characters");
-      return false;
-    }
-    return true;
-  };
-
-  const handleCreateUser = async () => {
+  const handleUpdateRestaurant = async () => {
     if (loading) return;
     setLoading(true);
-    if (!validateFields()) return;
-    setLoading(true);
+    if (!validateUpdateRestaurantFields(name, description, owner)) {
+      toast.warn("Please input all required fields");
+      setLoading(false);
+      return;
+    }
 
-    const result = await signUpAction(name, email, password, role);
+    const result = await updateRestaurant(
+      name,
+      description,
+      owner,
+      restaurant._id
+    );
     if (result.ok !== true) {
-      toast.error("An error caused during create");
+      toast.error("An error caused during sign up");
       setLoading(false);
       return;
     } else {
       const uploadResult = await uploadFile(
         file,
-        APIs.UPLOAD_USER_IMAGE_API + result.user._id
+        APIs.UPLOAD_RESTAURANT_IMAGE_API + result.restaurant._id
       );
       if (uploadResult.ok !== true) {
         toast.error("An error caused during file uploading");
       } else {
-        toast.success("Successfully created.");
+        toast.success("Successfully updated.");
       }
       setLoading(false);
 
@@ -70,14 +66,14 @@ export const CreateUserForm = () => {
   };
 
   return (
-    <CreateUserWrapper>
+    <UpdateRestaurantWrapper>
       <ContentWrapper>
         <TitleRow>
-          <Text className="large color-orange">Create New User</Text>
+          <Text className="large color-orange">Update Restaurant</Text>
         </TitleRow>
         <InputForm>
           <Row>
-            <InputLabel>User Avatar</InputLabel>
+            <InputLabel>Restaurant Image</InputLabel>
             <FileInputPreview
               imageChanged={(selectedFile) => setFile(selectedFile)}
             />
@@ -91,52 +87,34 @@ export const CreateUserForm = () => {
             />
           </Row>
           <Row>
-            <InputLabel>Email</InputLabel>
+            <InputLabel>Description</InputLabel>
             <FormInput
-              placeholder="Email"
-              value={email}
+              placeholder="Description"
+              value={description}
               onChange={(value) => setEmail(value)}
             />
           </Row>
           <Row>
-            <InputLabel>Password</InputLabel>
+            <InputLabel>Restaurant Owner (Id)</InputLabel>
             <FormInput
-              placeholder="Password"
-              value={password}
-              onChange={(value) => setPassword(value)}
-              type="password"
+              placeholder="Restaurant Owner (Id)"
+              value={owner}
+              onChange={(value) => setOwner(value)}
             />
           </Row>
           <Row>
-            <InputLabel>Role</InputLabel>
-            <RoleContainer>
-              <RoleSelector
-                active={role === ROLE.user}
-                onClick={() => setRole(ROLE.user)}
-              >
-                As a User
-              </RoleSelector>
-              <RoleSelector
-                active={role === ROLE.owner}
-                onClick={() => setRole(ROLE.owner)}
-              >
-                As a Owner
-              </RoleSelector>
-            </RoleContainer>
-          </Row>
-          <Row>
             <InputLabel />
-            <UpdateUserButton onClick={handleCreateUser}>
-              Create
-            </UpdateUserButton>
+            <UpdateRestaurantButton onClick={handleUpdateRestaurant}>
+              Update
+            </UpdateRestaurantButton>
           </Row>
         </InputForm>
       </ContentWrapper>
-    </CreateUserWrapper>
+    </UpdateRestaurantWrapper>
   );
 };
 
-const CreateUserWrapper = styled.div`
+const UpdateRestaurantWrapper = styled.div`
   width: 100%;
 
   margin: 0px 20px;
@@ -206,7 +184,7 @@ const InputLabel = styled.p`
   margin: 0;
 `;
 
-const UpdateUserButton = styled.button`
+const UpdateRestaurantButton = styled.button`
   width: 150px;
   height: 32px;
 
@@ -221,37 +199,6 @@ const UpdateUserButton = styled.button`
   outline: none;
   border: none;
   border-radius: 8px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-`;
-
-const RoleContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-
-  gap: 8px;
-`;
-
-interface RoleSelectorProps {
-  active: boolean;
-}
-
-const RoleSelector = styled.div<RoleSelectorProps>`
-  width: 100px;
-  height: 40px;
-
-  border: 1px solid
-    ${(props) => (props.active ? props.theme.orange : props.theme.grey)};
-  border-radius: 4px;
-
-  color: ${(props) => (props.active ? props.theme.orange : props.theme.base)};
 
   display: flex;
   flex-direction: column;

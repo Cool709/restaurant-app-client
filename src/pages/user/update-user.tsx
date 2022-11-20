@@ -12,7 +12,7 @@ export const UpdateUser = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
 
-  const getRestaurantData = async () => {
+  const getUserData = async () => {
     const result = await getUserById(String(id));
 
     if (result.ok !== true) {
@@ -25,7 +25,7 @@ export const UpdateUser = () => {
   };
 
   useEffect(() => {
-    getRestaurantData();
+    getUserData();
   });
 
   return (

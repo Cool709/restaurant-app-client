@@ -2,19 +2,19 @@ import styled from "styled-components";
 import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
 
-import { RestaurantCommentCard } from "./restaurant-comment-card";
-import { Text } from "../../text/text";
+import { CommentCard } from "../../../card/comment-card";
+import { Text } from "../../../text/text";
 
-import { getRestaurantsWithWaitingList } from "../../../actions/restaurant";
-import { useAuth } from "../../../services/auth.service";
+import { getRestaurntsByRate } from "../../../../actions/restaurant";
+import { useAuth } from "../../../../services/auth.service";
 
-export const ReplyWaitList = () => {
+export const CommentsAdmin = () => {
   const auth = useAuth();
   const [restaurants, setRestaurants] = useState([]);
 
   const getRestaurantData = async () => {
     if (auth?.user === null) return;
-    const result = await getRestaurantsWithWaitingList(String(auth?.user._id));
+    const result = await getRestaurntsByRate(0, 0);
 
     if (result.ok !== true) {
       toast.error("An error occured when fetching");
@@ -34,20 +34,24 @@ export const ReplyWaitList = () => {
   }, [auth]);
 
   return (
-    <ReplyWaitListWrapper>
-      <Text className="large color-orange semi-bold">
-        All Comments Waiting for your reply
-      </Text>
+    <CommentsWrapper>
+      <Text className="large color-orange semi-bold">Comments</Text>
       <CommentContainer>
         {restaurants.map((restaurant, index) => {
-          return <RestaurantCommentCard restaurant={restaurant} key={index} />;
+          return (
+            <CommentCard
+              restaurant={restaurant}
+              commentDeleted={getRestaurantData}
+              key={index}
+            />
+          );
         })}
       </CommentContainer>
-    </ReplyWaitListWrapper>
+    </CommentsWrapper>
   );
 };
 
-const ReplyWaitListWrapper = styled.div`
+const CommentsWrapper = styled.div`
   width: 100%;
 
   display: flex;

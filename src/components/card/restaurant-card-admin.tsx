@@ -2,30 +2,40 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { Rating } from "react-simple-star-rating";
 
 import { Text } from "../text/text";
 
 import { APIs } from "../../config/general";
-import { deleteUser } from "../../actions/users";
+import { deleteRestaurant } from "../../actions/restaurant";
 import { PRIVATE_ROUTES } from "../../config/routes";
 
 interface UserCardProps {
-  user: any;
-  userDeleted: () => void;
+  restaurant: any;
+  restaurantDeleted: () => void;
 }
 
-export const UserCard = ({ user, userDeleted }: UserCardProps) => {
+export const RestaurantCardAdmin = ({
+  restaurant,
+  restaurantDeleted,
+}: UserCardProps) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const handleUpdate = () => {
-    navigate(`${PRIVATE_ROUTES.update + PRIVATE_ROUTES.user}/${user._id}`);
+    navigate(
+      `${PRIVATE_ROUTES.update + PRIVATE_ROUTES.restaurant}/${restaurant._id}`
+    );
+  };
+
+  const handleExplore = () => {
+    navigate(`${PRIVATE_ROUTES.detail}/${restaurant._id}`);
   };
 
   const handleDelete = async () => {
     if (loading) return;
     setLoading(true);
-    const result = await deleteUser(user._id);
+    const result = await deleteRestaurant(restaurant._id);
 
     if (result.ok !== true) {
       toast.error("An error occured when fetching");
@@ -33,38 +43,46 @@ export const UserCard = ({ user, userDeleted }: UserCardProps) => {
       return;
     }
 
-    toast.success("User deleted");
-    userDeleted();
+    toast.success("Restaurant deleted");
+    restaurantDeleted();
 
     setLoading(false);
   };
 
   return (
-    <UserCardWrapper>
-      <UserImage
+    <RestaurantCardWrapper>
+      <RestaurantImage
         src={
-          APIs.USER_IMAGE_API +
-          (user.image === undefined ? "no-image" : user.image)
+          APIs.RESTAURANT_IMAGE_API +
+          (restaurant.image === undefined ? "no-image" : restaurant.image)
         }
-        alt="user"
+        alt="restaurant"
       />
-      <UserCardontent>
-        <Text className="medium bold">{user.name}</Text>
-        <Text className="bold">{user._id}</Text>
-        <Text className="bold">{user.email}</Text>
-        <Text className="bold">{user.role}</Text>
-      </UserCardontent>
+      <CardContent>
+        <Text className="medium bold">{restaurant.name}</Text>
+        <Text className="bold">{restaurant.description}</Text>
+        <Text className="bold">{restaurant._id}</Text>
+        <Text className="bold">
+          {new Date(restaurant.createdAt).toString()}
+        </Text>
+        <Rating initialValue={restaurant.normalRate} readonly size={25} />
+      </CardContent>
       <ActionContainer>
+        <Text className="color-orange" onClick={handleExplore}>
+          View
+        </Text>
         <Text className="color-orange" onClick={handleUpdate}>
           Update
         </Text>
-        <Text onClick={handleDelete}>Delete</Text>
+        <Text className="color-orange" onClick={handleDelete}>
+          Delete
+        </Text>
       </ActionContainer>
-    </UserCardWrapper>
+    </RestaurantCardWrapper>
   );
 };
 
-const UserCardWrapper = styled.div`
+const RestaurantCardWrapper = styled.div`
   width: 400px;
 
   position: relative;
@@ -92,7 +110,7 @@ const UserCardWrapper = styled.div`
   }
 `;
 
-const UserImage = styled.img`
+const RestaurantImage = styled.img`
   width: 100px;
   height: 100px;
 
@@ -101,7 +119,7 @@ const UserImage = styled.img`
   object-fit: cover;
 `;
 
-const UserCardontent = styled.div`
+const CardContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;

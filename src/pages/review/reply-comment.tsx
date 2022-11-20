@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 
-import { BlankContainer } from "../components/container/blank-container";
+import { BlankContainer } from "../../components/container/blank-container";
 
-import { getCommentById } from "../actions/comment";
-import { ReplyCommentForm } from "../components/page-elements/comment/reply-comment-form";
+import { getCommentById } from "../../actions/comment";
+import { ReplyCommentForm } from "../../components/page-elements/admin/reviews/create";
 
-export const ReplyComment = () => {
+export const ReplyCommentAdmin = () => {
   const { id } = useParams();
   const [comment, setComment] = useState(null);
 

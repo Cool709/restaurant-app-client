@@ -15,4 +15,7 @@ export const PRIVATE_ROUTES = {
   update: "/update",
   create: "/create",
   user: "/user",
+  restaurant: "/restaurant",
+  comment: "/comment",
+  review: "/review",
 };

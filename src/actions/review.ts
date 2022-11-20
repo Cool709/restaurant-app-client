@@ -25,3 +25,31 @@ export const replyToComment = async (
 
   return result?.data as any;
 };
+
+export const deleteReview = async (id: string, commentId: string) => {
+  const result = await axios
+    .delete(`${APIs.DELETE_REVIEW}${id}`, { params: { comment: commentId } })
+    .catch((err) => {
+      console.log(err);
+
+      return { data: { ok: false } };
+    });
+
+  console.log(result);
+
+  return result?.data as any;
+};
+
+export const updateReview = async (id: string, description: string) => {
+  const result = await axios
+    .put(`${APIs.UPDATE_REVIEW}${id}`, { description })
+    .catch((err) => {
+      console.log(err);
+
+      return { data: { ok: false } };
+    });
+
+  console.log(result);
+
+  return result?.data as any;
+};

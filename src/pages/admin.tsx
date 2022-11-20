@@ -7,6 +7,9 @@ import { AdminSideBar } from "../components/page-elements/admin/sidebar";
 import { ADMIN_PSTATE } from "../types/states";
 
 import { Users } from "../components/page-elements/admin/users/users";
+import { AdminRestaurants } from "../components/page-elements/admin/restaurants/restaurants";
+import { CommentsAdmin } from "../components/page-elements/admin/comments/comments";
+import { ReviewsAdmin } from "../components/page-elements/admin/reviews/reviews";
 
 export const Admin = () => {
   const [pstate, setPState] = useState(ADMIN_PSTATE.users);
@@ -20,11 +23,9 @@ export const Admin = () => {
           </SideContentWrapper>
           <ContentDetailWrapper>
             {pstate === ADMIN_PSTATE.users && <Users />}
-            {/* {pstate === ADMIN_PSTATE.restaurants && <RestaurantsByOwner />}
-            {pstate === ADMIN_PSTATE.create && (
-              <CreateRestaurantForm changeState={(value) => setPState(value)} />
-            )}
-            {pstate === ADMIN_PSTATE.reply && <ReplyWaitList />} */}
+            {pstate === ADMIN_PSTATE.restaurants && <AdminRestaurants />}
+            {pstate === ADMIN_PSTATE.comments && <CommentsAdmin />}
+            {pstate === ADMIN_PSTATE.reviews && <ReviewsAdmin />}
           </ContentDetailWrapper>
         </ContentWrapper>
       </BlankContainer>

@@ -21,10 +21,15 @@ export const APIs = {
   GET_RESTAURANTS_WAITING_LIST:
     BACKEND_BASE_URL + "/restaurants/search/waiting-reply",
   // Comments
+  GET_COMMENTS: BACKEND_BASE_URL + "/comments", // get
   LEAVE_COMMENT: BACKEND_BASE_URL + "/comments", // post
   GET_COMMENT_BY_ID: BACKEND_BASE_URL + "/comments/", // + id
+  UPDATE_COMMENT: BACKEND_BASE_URL + "/comments/", // + id put
+  DELETE_COMMENT: BACKEND_BASE_URL + "/comments/", // + id delete
   // Review
   CREATE_REVIEW: BACKEND_BASE_URL + "/reviews", //post
+  UPDATE_REVIEW: BACKEND_BASE_URL + "/reviews/", //put + id
+  DELETE_REVIEW: BACKEND_BASE_URL + "/reviews/", //delete + id
   // users
   GET_USERS: BACKEND_BASE_URL + "/user",
   GET_USER_BY_ID: BACKEND_BASE_URL + "/user/", // + id

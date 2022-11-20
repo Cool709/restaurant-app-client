@@ -26,6 +26,12 @@ import { LeaveComment } from "./pages/leave-comment";
 import { ReplyComment } from "./pages/reply-comment";
 import { UpdateUser } from "./pages/user/update-user";
 import { CreateUser } from "./pages/user/create-user";
+import { CreateRestaurant } from "./pages/restaurant/create-restaurant";
+import { UpdateRestaurant } from "./pages/restaurant/update-restaurant";
+import { CreateComment } from "./pages/comment/create-comment";
+import { UpdateComment } from "./pages/comment/update-comment";
+import { ReplyCommentAdmin } from "./pages/review/reply-comment";
+import { UpdateReview } from "./pages/review/update-review";
 
 function App() {
   return (
@@ -62,6 +68,40 @@ function App() {
                   <Route
                     path={`${PRIVATE_ROUTES.update + PRIVATE_ROUTES.user}/:id`}
                     element={<UpdateUser />}
+                  />
+                  <Route
+                    path={PRIVATE_ROUTES.create + PRIVATE_ROUTES.restaurant}
+                    element={<CreateRestaurant />}
+                  />
+                  <Route
+                    path={`${
+                      PRIVATE_ROUTES.update + PRIVATE_ROUTES.restaurant
+                    }/:id`}
+                    element={<UpdateRestaurant />}
+                  />
+                  <Route
+                    path={`${
+                      PRIVATE_ROUTES.create + PRIVATE_ROUTES.comment
+                    }/:id`}
+                    element={<CreateComment />}
+                  />
+                  <Route
+                    path={`${
+                      PRIVATE_ROUTES.update + PRIVATE_ROUTES.comment
+                    }/:id`}
+                    element={<UpdateComment />}
+                  />
+                  <Route
+                    path={`${
+                      PRIVATE_ROUTES.create + PRIVATE_ROUTES.review
+                    }/:id`}
+                    element={<ReplyCommentAdmin />}
+                  />
+                  <Route
+                    path={`${
+                      PRIVATE_ROUTES.update + PRIVATE_ROUTES.review
+                    }/:id`}
+                    element={<UpdateReview />}
                   />
                 </Route>
                 {/* AUTH */}

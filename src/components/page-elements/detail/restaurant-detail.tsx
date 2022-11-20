@@ -18,7 +18,7 @@ export const RestaurantDetail = ({
       <RestaurantImage
         src={
           APIs.RESTAURANT_IMAGE_API +
-          (restaurant === null ? "no-image" : (restaurant as any).image)
+          (restaurant.image === undefined ? "no-image" : restaurant.image)
         }
         alt="restaurant"
       />
@@ -77,27 +77,4 @@ const RestaurantDescription = styled.p`
 
   width: 250px;
   text-align: center;
-`;
-
-const LeaveCommentButton = styled(Link)`
-  width: 150px;
-  height: 32px;
-
-  font-size: 16px;
-  font-weight: 400;
-  text-decoration: none;
-
-  color: ${(props) => props.theme.white};
-  background-color: ${(props) => props.theme.orange};
-
-  outline: none;
-  border: none;
-  border-radius: 8px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
 `;
