@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-<video src="./cypress/videos/login.cy.ts.mp4" width="100%">
+https://user-images.githubusercontent.com/101523940/203051791-63016c31-8a79-46e2-a02e-8d2d81e1a45d.mp4
 
 ## Description
 
