@@ -49,7 +49,7 @@ export const SignInForm = () => {
 
     const result = await signInAction(email, password);
     if (result.ok !== true) {
-      toast.error(result.err.message);
+      toast.error("An error caused during sign in");
     } else {
       setAuthToken(result.token);
       auth?.setUserData(result);
