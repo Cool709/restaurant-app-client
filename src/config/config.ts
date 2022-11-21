@@ -1,3 +1,6 @@
+// ====================
+// All colors in website
+// ====================
 export const COLORS = {
   base: "#333333",
   secondary: "#4D6DBD",
@@ -12,6 +15,9 @@ export const COLORS = {
   orangeAlt: "#FAF7F2",
 };
 
+// ====================
+// Font sizes
+// ====================
 export const TEXT_SIZE = {
   sm: "9px",
   small: "12px",

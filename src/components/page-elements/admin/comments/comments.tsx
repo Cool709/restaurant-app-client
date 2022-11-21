@@ -8,10 +8,16 @@ import { Text } from "../../../text/text";
 import { getRestaurntsByRate } from "../../../../actions/restaurant";
 import { useAuth } from "../../../../services/auth.service";
 
+// ====================
+// Comments container in admin
+// ====================
 export const CommentsAdmin = () => {
   const auth = useAuth();
   const [restaurants, setRestaurants] = useState([]);
 
+  // ====================
+  // Get comments data with restaurant
+  // ====================
   const getRestaurantData = async () => {
     if (auth?.user === null) return;
     const result = await getRestaurntsByRate(0, 0);

@@ -9,6 +9,9 @@ import { CreateRestaurantForm } from "../components/page-elements/owner/create-r
 import { ReplyWaitList } from "../components/page-elements/owner/reply-wait-list";
 import { OWNER_PSTATE } from "../types/states";
 
+// ====================
+// Explore all restaurants
+// ====================
 export const Restaurants = () => {
   const [pstate, setPState] = useState(OWNER_PSTATE.restaurants);
 

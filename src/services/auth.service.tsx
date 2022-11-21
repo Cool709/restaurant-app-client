@@ -25,6 +25,9 @@ export const useAuth = () => {
   return useContext(AuthContext);
 };
 
+// ====================
+// Serve current user
+// ====================
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const navigate = useNavigate();
   const [user, setUser] = useState<UserInterface | null>(null);

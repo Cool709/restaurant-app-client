@@ -11,6 +11,9 @@ const theme = {
   ...TEXT_SIZE,
 };
 
+// ====================
+// Theme and auth provider
+// ====================
 export const Provider = ({ children }: ProviderProps) => {
   return (
     <ThemeProvider theme={theme}>

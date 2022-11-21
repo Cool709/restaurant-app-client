@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { Container } from "../components/container/container";
 import { Text } from "../components/text/text";
 
+// ====================
+// Footer
+// ====================
 export const Footer = () => {
   return (
     <FooterWrapper>

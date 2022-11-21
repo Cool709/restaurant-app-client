@@ -32,6 +32,9 @@ export const SignUpForm = () => {
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState();
 
+  // ====================
+  // Validate input fields
+  // ====================
   const validateFields = () => {
     if (name === "" || email === "" || password === "") {
       toast.warn("Please fill all required fields");
@@ -48,6 +51,9 @@ export const SignUpForm = () => {
     return true;
   };
 
+  // ====================
+  // Sign up
+  // ====================
   const handleSignUp = async () => {
     if (loading) return;
     if (!validateFields()) return;

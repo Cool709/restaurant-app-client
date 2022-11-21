@@ -8,6 +8,9 @@ import { BlankContainer } from "../../components/container/blank-container";
 import { getUserById } from "../../actions/users";
 import { UpdateUserForm } from "../../components/page-elements/admin/users/update";
 
+// ====================
+// Update specified user
+// ====================
 export const UpdateUser = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);

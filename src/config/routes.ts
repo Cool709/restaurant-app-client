@@ -1,3 +1,6 @@
+// ====================
+// No need authentication
+// ====================
 export const PUBLIC_ROUTES = {
   default: "/",
   signup: "/signup",
@@ -5,6 +8,9 @@ export const PUBLIC_ROUTES = {
   error404: "/error404",
 };
 
+// ====================
+// Need authentication
+// ====================
 export const PRIVATE_ROUTES = {
   home: "/home",
   admin: "/admin",

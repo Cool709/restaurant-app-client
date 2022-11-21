@@ -15,6 +15,9 @@ export const AdminRestaurants = () => {
   const auth = useAuth();
   const [restaurants, setRestaurants] = useState([]);
 
+  // ====================
+  // Get all restaurants
+  // ====================
   const getRestaurantsData = async () => {
     if (auth?.user === null) return;
     const result = await getRestaurntsByRate(0, 0);

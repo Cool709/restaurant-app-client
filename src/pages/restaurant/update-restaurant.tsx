@@ -8,10 +8,16 @@ import { BlankContainer } from "../../components/container/blank-container";
 import { getRestaurantById } from "../../actions/restaurant";
 import { UpdateRestaurantForm } from "../../components/page-elements/admin/restaurants/update";
 
+// ====================
+// Update restaurant page
+// ====================
 export const UpdateRestaurant = () => {
   const { id } = useParams();
   const [restaurant, setRestaurant] = useState(null);
 
+  // ====================
+  // Get all restaurants
+  // ====================
   const getRestaurantData = async () => {
     const result = await getRestaurantById(String(id));
 

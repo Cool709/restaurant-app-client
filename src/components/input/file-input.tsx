@@ -5,6 +5,9 @@ interface Props {
   imageChanged: (file: any) => void;
 }
 
+// ====================
+// Image file input with preview
+// ====================
 export const FileInputPreview: React.FC<Props> = ({ imageChanged }) => {
   const defaultImage = "../../assets/images/user.jpg";
   const previewRef = useRef<HTMLDivElement>(null);
@@ -12,6 +15,9 @@ export const FileInputPreview: React.FC<Props> = ({ imageChanged }) => {
   const [file, setFile] = useState<string | ArrayBuffer | null>(defaultImage);
   const [isSelected, setSelected] = useState(false);
 
+  // ====================
+  // handle image when image input file value changed
+  // ====================
   const ImageChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     let files;

@@ -1,6 +1,9 @@
 import axios from "axios";
 import { APIs } from "../config/general";
 
+// ====================
+// Get comment with specified id: returns comment
+// ====================
 export const getCommentById = async (id: string) => {
   const result = await axios
     .get(`${APIs.GET_COMMENT_BY_ID}${id}`)
@@ -13,6 +16,9 @@ export const getCommentById = async (id: string) => {
   return result?.data as any;
 };
 
+// ====================
+// Get all comments: returns all of comments in database
+// ====================
 export const getComments = async () => {
   const result = await axios.get(`${APIs.GET_COMMENTS}`).catch((err) => {
     console.log(err);
@@ -23,6 +29,9 @@ export const getComments = async () => {
   return result?.data as any;
 };
 
+// ====================
+// Delete comment with specified id
+// ====================
 export const deleteComment = async (id: string) => {
   const result = await axios
     .delete(`${APIs.DELETE_COMMENT}${id}`)
@@ -35,6 +44,9 @@ export const deleteComment = async (id: string) => {
   return result?.data as any;
 };
 
+// ====================
+// Update comment with specified id
+// ====================
 export const updateComment = async (
   rate: number,
   title: string,

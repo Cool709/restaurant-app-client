@@ -30,6 +30,9 @@ export const UpdateRestaurantForm = ({
   const [file, setFile] = useState();
   const [loading, setLoading] = useState(false);
 
+  // ====================
+  // update restaurant
+  // ====================
   const handleUpdateRestaurant = async () => {
     if (loading) return;
     setLoading(true);

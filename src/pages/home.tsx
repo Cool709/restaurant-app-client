@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { BlankContainer } from "../components/container/blank-container";
 import { ExploreRestaurants } from "../components/page-elements/explore/restaurants";
 
+// ====================
+// Home for users
+// ====================
 export const Home = () => {
   return (
     <HomeWrapper>

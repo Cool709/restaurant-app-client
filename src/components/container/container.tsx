@@ -5,6 +5,9 @@ interface ContainerProps {
   className?: string;
 }
 
+// ====================
+// Container with max width
+// ====================
 export const Container = ({ children, className }: ContainerProps) => {
   return <ContainerWrapper className={className}>{children}</ContainerWrapper>;
 };

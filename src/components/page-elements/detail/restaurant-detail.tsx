@@ -9,6 +9,9 @@ interface RestaurantDetailProps {
   children?: React.ReactNode;
 }
 
+// ====================
+// Restaurant container with detailed information
+// ====================
 export const RestaurantDetail = ({
   restaurant,
   children,

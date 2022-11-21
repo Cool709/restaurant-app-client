@@ -23,6 +23,9 @@ export const ReviewCard = ({ comment, reviewDeleted }: ReviewCardProps) => {
   const [height, setHeight] = useState(0);
   const [loading, setLoading] = useState(false);
 
+  // ====================
+  // Delete review
+  // ====================
   const handleDelete = async (id: string) => {
     if (loading) return;
     setLoading(true);

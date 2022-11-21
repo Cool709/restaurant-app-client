@@ -11,6 +11,9 @@ import { PUBLIC_ROUTES, PRIVATE_ROUTES } from "../config/routes";
 import { APIs } from "../config/general";
 import { ROLE } from "../constants/constants";
 
+// ====================
+// Header
+// ====================
 export const Header = () => {
   const auth = useAuth();
   const homeRoute =

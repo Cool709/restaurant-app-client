@@ -8,6 +8,9 @@ import { BlankContainer } from "../components/container/blank-container";
 import { getCommentById } from "../actions/comment";
 import { ReplyCommentForm } from "../components/page-elements/comment/reply-comment-form";
 
+// ====================
+// Create review
+// ====================
 export const ReplyComment = () => {
   const { id } = useParams();
   const [comment, setComment] = useState(null);

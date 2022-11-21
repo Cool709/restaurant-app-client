@@ -14,6 +14,9 @@ export const Users = () => {
   const auth = useAuth();
   const [users, setUsers] = useState([]);
 
+  // ====================
+  // Get all users
+  // ====================
   const getUserData = async () => {
     if (auth?.user === null) return;
     const result = await getAllUsers();

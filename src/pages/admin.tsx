@@ -11,6 +11,9 @@ import { AdminRestaurants } from "../components/page-elements/admin/restaurants/
 import { CommentsAdmin } from "../components/page-elements/admin/comments/comments";
 import { ReviewsAdmin } from "../components/page-elements/admin/reviews/reviews";
 
+// ====================
+// Admin page
+// ====================
 export const Admin = () => {
   const [pstate, setPState] = useState(ADMIN_PSTATE.users);
 

@@ -8,6 +8,9 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
+// ====================
+// Page layout
+// ====================
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <MainContainer>

@@ -12,6 +12,9 @@ export const ReviewsAdmin = () => {
   const auth = useAuth();
   const [comments, setComments] = useState([]);
 
+  // ====================
+  // Get all comments data with reviews
+  // ====================
   const getCommentData = async () => {
     if (auth?.user === null) return;
     const result = await getComments();

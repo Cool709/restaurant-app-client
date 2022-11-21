@@ -5,6 +5,9 @@ interface BlankContainerProps {
   className?: string;
 }
 
+// ====================
+// Blank container with 100vh - layout height
+// ====================
 export const BlankContainer = ({
   children,
   className,

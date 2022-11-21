@@ -8,6 +8,9 @@ import { Text } from "../../text/text";
 import { getRestaurantsWithWaitingList } from "../../../actions/restaurant";
 import { useAuth } from "../../../services/auth.service";
 
+// ====================
+// Owner page container for comments waiting for reply
+// ====================
 export const ReplyWaitList = () => {
   const auth = useAuth();
   const [restaurants, setRestaurants] = useState([]);

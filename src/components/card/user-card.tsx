@@ -22,6 +22,9 @@ export const UserCard = ({ user, userDeleted }: UserCardProps) => {
     navigate(`${PRIVATE_ROUTES.update + PRIVATE_ROUTES.user}/${user._id}`);
   };
 
+  // ====================
+  // Delete user
+  // ====================
   const handleDelete = async () => {
     if (loading) return;
     setLoading(true);

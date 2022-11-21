@@ -4,6 +4,9 @@ import { BlankContainer } from "../../components/container/blank-container";
 
 import { CreateUserForm } from "../../components/page-elements/admin/users/create";
 
+// ====================
+// Create new user
+// ====================
 export const CreateUser = () => {
   return (
     <CreateUserWrapper>

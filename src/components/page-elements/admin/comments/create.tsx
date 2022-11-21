@@ -26,6 +26,9 @@ export const CreateCommentForm = () => {
   const [owner, setOwner] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // ====================
+  // Create comment
+  // ====================
   const handleLeaveComment = async () => {
     if (loading) return;
     if (!validateLeaveCommentFields(title, description)) {

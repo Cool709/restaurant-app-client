@@ -4,6 +4,9 @@ import { BlankContainer } from "../../components/container/blank-container";
 
 import { CreateRestaurantForm } from "../../components/page-elements/admin/restaurants/create";
 
+// ====================
+// Create restaurant page
+// ====================
 export const CreateRestaurant = () => {
   return (
     <CreateRestaurantWrapper>

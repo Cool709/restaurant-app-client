@@ -37,6 +37,8 @@ export const ExploreRestaurants = () => {
       return;
     }
 
+    console.log(result.restaurants);
+
     setRestaurants(result.restaurants);
   };
 

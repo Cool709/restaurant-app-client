@@ -23,6 +23,9 @@ export const CommentCard = ({ restaurant, commentDeleted }: CommentProps) => {
   const [height, setHeight] = useState(0);
   const [loading, setLoading] = useState(false);
 
+  // ====================
+  // Interacts with delete comment link
+  // ====================
   const handleDelete = async (id: string) => {
     if (loading) return;
     setLoading(true);

@@ -1,6 +1,18 @@
-# Getting Started with Create React App
+# Restaurant Rating App with create-react-app:typescript && styled-components
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+<video src="./cypress/videos/login.cy.ts.mp4" width="100%">
+
+## Description
+
+Test assignment project. Restaurant rating app frontend part with react typescript and styled-components <br />
+Interacts with cypress
+
+## Installation
+
+- Download it through Github
+- Execute with below available commands
 
 ## Available Scripts
 
@@ -39,8 +51,14 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### `npm run cy:open`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+open cypress
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `npm run cy:run`
+
+execute cypress
+
+## Additional Info
+
+- Github: @Cool709

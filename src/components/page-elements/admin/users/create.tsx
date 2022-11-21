@@ -26,6 +26,9 @@ export const CreateUserForm = () => {
   const [file, setFile] = useState();
   const [loading, setLoading] = useState(false);
 
+  // ====================
+  // validate input fields
+  // ====================
   const validateFields = () => {
     if (name === "" || email === "" || password === "") {
       toast.warn("Please fill all required fields");
@@ -42,6 +45,9 @@ export const CreateUserForm = () => {
     return true;
   };
 
+  // ====================
+  // Create new user
+  // ====================
   const handleCreateUser = async () => {
     if (loading) return;
     setLoading(true);

@@ -9,6 +9,9 @@ interface RestaurantDetailProps {
   restaurant: any;
 }
 
+// ====================
+// Leave comment button
+// ====================
 export const LeaveCommentButton = ({ restaurant }: RestaurantDetailProps) => {
   const [availableToComment, setAvailableToComment] = useState(false);
   useEffect(() => {

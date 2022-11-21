@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { BlankContainer } from "../components/container/blank-container";
 import { SignInForm } from "../components/page-elements/auth/signin-form";
 
+// ====================
+// Sign in page
+// ====================
 export const SignIn = () => {
   return (
     <SignInWrapper>

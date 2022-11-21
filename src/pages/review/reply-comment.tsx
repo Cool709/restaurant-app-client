@@ -8,10 +8,16 @@ import { BlankContainer } from "../../components/container/blank-container";
 import { getCommentById } from "../../actions/comment";
 import { ReplyCommentForm } from "../../components/page-elements/admin/reviews/create";
 
+// ====================
+// Reply comment page for admin
+// ====================
 export const ReplyCommentAdmin = () => {
   const { id } = useParams();
   const [comment, setComment] = useState(null);
 
+  // ====================
+  // Get restaurant
+  // ====================
   const getRestaurantData = async () => {
     const result = await getCommentById(String(id));
 

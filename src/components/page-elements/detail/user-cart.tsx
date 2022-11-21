@@ -7,6 +7,9 @@ interface UserCartProps {
   user: any;
 }
 
+// ====================
+// User cart
+// ====================
 export const UserCart = ({ user }: UserCartProps) => {
   return (
     <>

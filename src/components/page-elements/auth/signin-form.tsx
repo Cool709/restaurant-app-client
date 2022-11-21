@@ -26,6 +26,9 @@ export const SignInForm = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // ====================
+  // Validate input fields
+  // ====================
   const validateFields = () => {
     if (email === "" || password === "") {
       toast.warn("Please fill all required fields");
@@ -42,6 +45,9 @@ export const SignInForm = () => {
     return true;
   };
 
+  // ====================
+  // Login
+  // ====================
   const handleLogin = async () => {
     if (loading) return;
     if (!validateFields()) return;
@@ -75,6 +81,7 @@ export const SignInForm = () => {
           placeholder="Email"
           value={email}
           onChange={(value) => setEmail(value)}
+          data-testeid="email-input"
         />
         <FormInput
           icon={<AiOutlineUnlock className="color-base size-20" />}
@@ -82,9 +89,10 @@ export const SignInForm = () => {
           value={password}
           onChange={(value) => setPassword(value)}
           type="password"
+          data-testeid="password-input"
         />
       </InputContainer>
-      <SignInButton onClick={() => handleLogin()}>
+      <SignInButton onClick={() => handleLogin()} data-testeid="signin-button">
         <DotLoader
           color={"white"}
           size={20}

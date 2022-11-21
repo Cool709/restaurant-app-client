@@ -27,6 +27,9 @@ export const UpdateUserForm = ({ user }: UpdateUserFormProps) => {
   const [file, setFile] = useState();
   const [loading, setLoading] = useState(false);
 
+  // ====================
+  // Update user data
+  // ====================
   const handleUpdateUser = async () => {
     if (loading) return;
     setLoading(true);

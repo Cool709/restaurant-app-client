@@ -1,5 +1,8 @@
 import axios from "axios";
 
+// ====================
+// Upload a file to server. handle both of user and restaurant images
+// ====================
 export const uploadFile = async (file: any, url: string) => {
   if (file === undefined) return { ok: true };
 

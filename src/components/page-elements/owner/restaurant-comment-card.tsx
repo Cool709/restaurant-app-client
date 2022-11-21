@@ -13,6 +13,9 @@ interface CommentProps {
   restaurant: any;
 }
 
+// ====================
+// Restaurant comment
+// ====================
 export const RestaurantCommentCard = ({ restaurant }: CommentProps) => {
   const boardRef = useRef(null);
 

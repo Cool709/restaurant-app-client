@@ -21,6 +21,9 @@ export const CreateRestaurantForm = () => {
   const [file, setFile] = useState();
   const [loading, setLoading] = useState(false);
 
+  // ====================
+  // Validate input fields
+  // ====================
   const validateFields = () => {
     if (name === "" || description === "" || owner === "") {
       toast.warn("Please fill all required fields");
@@ -29,6 +32,9 @@ export const CreateRestaurantForm = () => {
     return true;
   };
 
+  // ====================
+  // Create restaurant
+  // ====================
   const handleCreateRestaurant = async () => {
     if (loading) return;
     setLoading(true);

@@ -8,6 +8,9 @@ import { Text } from "../../text/text";
 import { getRestaurantsByOwner } from "../../../actions/restaurant";
 import { useAuth } from "../../../services/auth.service";
 
+// ====================
+// Restaurant container by owner
+// ====================
 export const RestaurantsByOwner = () => {
   const auth = useAuth();
   const [restaurants, setRestaurants] = useState([]);

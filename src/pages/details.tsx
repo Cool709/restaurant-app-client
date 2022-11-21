@@ -10,6 +10,9 @@ import { RestaurantDetail } from "../components/page-elements/detail/restaurant-
 import { Comments } from "../components/page-elements/detail/comments";
 import { LeaveCommentButton } from "./../components/page-elements/detail/leave-comment-button";
 
+// ====================
+// Restaurant detailed page
+// ====================
 export const Details = () => {
   const { id } = useParams();
   const [restaurant, setRestaurant] = useState(null);

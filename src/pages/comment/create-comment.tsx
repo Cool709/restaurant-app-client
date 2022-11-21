@@ -4,6 +4,9 @@ import { BlankContainer } from "../../components/container/blank-container";
 
 import { CreateCommentForm } from "../../components/page-elements/admin/comments/create";
 
+// ====================
+// Create comment
+// ====================
 export const CreateComment = () => {
   return (
     <CreateCommentWrapper>

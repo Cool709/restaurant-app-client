@@ -9,6 +9,9 @@ interface OwnerSideBarProps {
   changeState: (value: string) => void;
 }
 
+// ====================
+// Left side bar for owner page
+// ====================
 export const OwnerSideBar = ({ changeState }: OwnerSideBarProps) => {
   const auth = useAuth();
 

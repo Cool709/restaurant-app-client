@@ -9,6 +9,9 @@ interface CommentProps {
   comment: any;
 }
 
+// ====================
+// Comment container
+// ====================
 export const Comment = ({ comment }: CommentProps) => {
   const boardRef = useRef(null);
 

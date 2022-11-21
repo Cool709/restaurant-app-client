@@ -25,6 +25,9 @@ export const ReplyCommentForm = ({ comment }: ReplyCommentFormProps) => {
   const [user, setUser] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // ====================
+  // Create review
+  // ====================
   const handleReplyComment = async () => {
     if (loading) return;
     setLoading(true);

@@ -8,6 +8,9 @@ interface AdminSideBarProps {
   changeState: (value: string) => void;
 }
 
+// ====================
+// Left side bar in admin page
+// ====================
 export const AdminSideBar = ({ changeState }: AdminSideBarProps) => {
   return (
     <>

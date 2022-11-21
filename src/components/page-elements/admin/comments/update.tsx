@@ -24,6 +24,9 @@ export const UpdateCommentForm = ({ comment }: UpdateCommentFormProps) => {
   const [owner, setOwner] = useState(comment.user._id);
   const [loading, setLoading] = useState(false);
 
+  // ====================
+  // Update comment
+  // ====================
   const handleUpdateComment = async () => {
     if (loading) return;
     setLoading(true);

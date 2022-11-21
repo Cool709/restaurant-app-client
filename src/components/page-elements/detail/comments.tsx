@@ -5,6 +5,9 @@ interface CommentsProp {
   comments: any;
 }
 
+// ====================
+// Comments container
+// ====================
 export const Comments = ({ comments }: CommentsProp) => {
   return (
     <CommentsWrapper>

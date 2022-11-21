@@ -8,6 +8,9 @@ interface FormInputProps {
   onChange: (val: string) => void;
 }
 
+// ====================
+// Normal input in form
+// ====================
 export const FormInput = ({
   icon,
   placeholder,

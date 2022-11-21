@@ -22,16 +22,25 @@ export const RestaurantCardAdmin = ({
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
+  // ====================
+  // Update restaurant
+  // ====================
   const handleUpdate = () => {
     navigate(
       `${PRIVATE_ROUTES.update + PRIVATE_ROUTES.restaurant}/${restaurant._id}`
     );
   };
 
+  // ====================
+  // Link to detailed view
+  // ====================
   const handleExplore = () => {
     navigate(`${PRIVATE_ROUTES.detail}/${restaurant._id}`);
   };
 
+  // ====================
+  // Delete restaurant
+  // ====================
   const handleDelete = async () => {
     if (loading) return;
     setLoading(true);

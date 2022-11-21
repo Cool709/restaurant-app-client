@@ -15,12 +15,14 @@ interface ReplyCommentFormProps {
 }
 
 export const UpdateReplyForm = ({ comment }: ReplyCommentFormProps) => {
-  const { id } = useParams();
   const navigate = useNavigate();
 
   const [reply, setReply] = useState(comment.review.description);
   const [loading, setLoading] = useState(false);
 
+  // ====================
+  // Update reply
+  // ====================
   const handleUpdateReply = async () => {
     if (loading) return;
     setLoading(true);

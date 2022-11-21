@@ -1,5 +1,11 @@
+// ====================
+// Base backend url deployed on digitalocean
+// ====================
 export const BACKEND_BASE_URL = "https://sea-lion-app-6rs9n.ondigitalocean.app";
 
+// ====================
+// All api urls in to interact with backend
+// ====================
 export const APIs = {
   // auth
   REGISTER_API: BACKEND_BASE_URL + "/user",

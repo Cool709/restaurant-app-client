@@ -8,10 +8,16 @@ import { BlankContainer } from "../../components/container/blank-container";
 import { getCommentById } from "../../actions/comment";
 import { UpdateReplyForm } from "../../components/page-elements/admin/reviews/update";
 
+// ====================
+// Update review
+// ====================
 export const UpdateReview = () => {
   const { id } = useParams();
   const [comment, setComment] = useState(null);
 
+  // ====================
+  // Get restaurant with specified id
+  // ====================
   const getRestaurantData = async () => {
     const result = await getCommentById(String(id));
 

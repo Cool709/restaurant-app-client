@@ -6,6 +6,9 @@ interface TextProps {
   onClick?: () => void;
 }
 
+// ====================
+// Normal text component
+// ====================
 export const Text = ({ children, className, onClick }: TextProps) => {
   return (
     <TextWrapper className={className} onClick={onClick}>

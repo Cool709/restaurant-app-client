@@ -8,6 +8,9 @@ import { BlankContainer } from "../../components/container/blank-container";
 import { getCommentById } from "../../actions/comment";
 import { UpdateCommentForm } from "../../components/page-elements/admin/comments/update";
 
+// ====================
+// Update comment
+// ====================
 export const UpdateComment = () => {
   const { id } = useParams();
   const [comment, setComment] = useState(null);

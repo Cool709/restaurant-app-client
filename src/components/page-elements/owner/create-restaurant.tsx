@@ -21,6 +21,9 @@ interface CreateRestaurantFormProps {
   changeState: (value: string) => void;
 }
 
+// ====================
+// Create new restaurant
+// ====================
 export const CreateRestaurantForm = ({
   changeState,
 }: CreateRestaurantFormProps) => {

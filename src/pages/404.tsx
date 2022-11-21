@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { BlankContainer } from "../components/container/blank-container";
 import { Text } from "../components/text/text";
 
+// ====================
+// Error404 page
+// ====================
 export const NotFoundPage = () => {
   return (
     <NotFoundWrapper>

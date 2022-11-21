@@ -4,6 +4,9 @@ import { getCurrentUser } from "../../actions/auth";
 import { ROLE } from "../../constants/constants";
 import { PUBLIC_ROUTES } from "../../config/routes";
 
+// ====================
+// Route for user
+// ====================
 export const UserRoute = () => {
   const result = getCurrentUser();
 

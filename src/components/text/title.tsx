@@ -5,6 +5,9 @@ interface TextProps {
   className?: string;
 }
 
+// ====================
+// Title container
+// ====================
 export const Title = ({ children, className }: TextProps) => {
   return <TitleWrapper className={className}>{children}</TitleWrapper>;
 };

@@ -9,6 +9,9 @@ import { getRestaurantById } from "../actions/restaurant";
 import { RestaurantDetail } from "../components/page-elements/detail/restaurant-detail";
 import { CreateCommentForm } from "../components/page-elements/comment/create-comment-form";
 
+// ====================
+// Leave comment
+// ====================
 export const LeaveComment = () => {
   const { id } = useParams();
   const [restaurant, setRestaurant] = useState(null);

@@ -33,6 +33,9 @@ import { UpdateComment } from "./pages/comment/update-comment";
 import { ReplyCommentAdmin } from "./pages/review/reply-comment";
 import { UpdateReview } from "./pages/review/update-review";
 
+// ====================
+// Base
+// ====================
 function App() {
   return (
     <Suspense fallback={<>Loading</>}>

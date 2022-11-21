@@ -4,6 +4,9 @@ import { getAuth } from "../utils/localstorage";
 import { setAuthToken } from "../utils/set-auth-token";
 import { APIs } from "../config/general";
 
+// ====================
+// User sign up action: returns registered user
+// ====================
 export const signUpAction = async (
   name: string,
   email: string,
@@ -26,6 +29,9 @@ export const signUpAction = async (
   return (res as any).data as any;
 };
 
+// ====================
+// User sign in action: returns logged user
+// ====================
 export const signInAction = async (email: string, password: string) => {
   const res = await axios
     .post(APIs.LOGIN_API, {
@@ -41,6 +47,9 @@ export const signInAction = async (email: string, password: string) => {
   return (res as any).data as any;
 };
 
+// ====================
+// Get currently logged user: check localstorage and decode it using jwt-decode
+// ====================
 export const getCurrentUser = () => {
   if (getAuth() !== "") setAuthToken(getAuth());
   else return { ok: false };
